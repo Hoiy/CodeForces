@@ -1,3 +1,7 @@
 *.in
 *.exe
 *.txt
+**/build
+**/CMakeFiles
+*.swp
+*.out
