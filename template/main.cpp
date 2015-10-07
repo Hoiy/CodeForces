@@ -3,7 +3,8 @@
 using namespace std;
 
 #define ULL unsigned long long
-#define FOR(var,start,end) for(ULL var = start; var <= end; ++var) 
+#define SLL long long
+#define FOR(var,start,end) for(SLL var = start; var <= end; ++var) 
 
 int main() {
     return 0;
