@@ -51,9 +51,11 @@ int main() {
 
   cout << cost << endl;
   cout << size << endl;
+  cout.sync_with_stdio(false);
+  cin.tie(0);
   for (ULL i = 0; i < size; i++) {
-    // cout << step[i][0] << " " << step[i][1] << " " << endl;
-    printf("%d %d\n", step[i][0], step[i][1]);
+    cout << step[i][0] << " " << step[i][1] << " \n";
+    //printf("%d %d\n", step[i][0], step[i][1]);
   }
   return 0;
 }

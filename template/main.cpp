@@ -1,11 +1,19 @@
-#include<iostream>
+#include <iostream>
+#include <algorithm>
+#include <cassert>
+#include <map>
+#include <list>
+#include <vector>
 
 using namespace std;
 
-#define ULL unsigned long long
-#define SLL long long
-#define FOR(var,start,end) for(SLL var = start; var <= end; ++var) 
+typedef unsigned long long ull;
+typedef long long ll;
+#define fle(var, start, end) for (ll var = start; var <= end; ++var)
+#define fl(var, start, end) for (ll var = start; var < end; ++var)
 
-int main() {
-    return 0;
+template <class T> T gcd(T a, T b) { return b ? gcd(b, a % b) : a; }
+
+int main() { 
+    return 0; 
 }
