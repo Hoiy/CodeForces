@@ -37,17 +37,15 @@ int main() {
   factor.insert(1);
   factor.insert(n);
 
-  elf(i, ceil(sqrt(n)) + 1, 2) {
+  elf(i, floor(sqrt(n)), 2) {
     if (n % i == 0) {
       factor.insert(i);
       factor.insert(n / i);
     }
   }
-  // dump(factor);
-  // cout << factor.size() << endl;
   for (auto a : factor) {
     bool good = true;
-    fle(i, 2, ceil(sqrt(n)) + 1) {
+    fle(i, 2, floor(sqrt(n))) {
       if (a % (i * i) == 0) {
         good = false;
         break;
