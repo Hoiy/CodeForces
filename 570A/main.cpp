@@ -38,4 +38,29 @@ template <class T> T lcm(T a, T b) { return a / gcd(a, b) * b; }
 
 using namespace std;
 
-int main() { return 0; }
+int main() {
+  ll n, m;
+  cin >> n >> m;
+  ll can[100] = {0};
+  ll max_idx = -1;
+  ll max = -1;
+  fl(i, 0, m) {
+    ll winner_vote = -1;
+    ll winner_idx = -1;
+    fl(j, 0, n) {
+      ll vote;
+      cin >> vote;
+      if (vote > winner_vote) {
+        winner_vote = vote;
+        winner_idx = j;
+      }
+    }
+    can[winner_idx]++;
+    if (can[winner_idx] > max || (can[winner_idx]==max && winner_idx < max_idx)) {
+      max_idx = winner_idx;
+      max = can[winner_idx];
+    }
+  }
+  cout << max_idx + 1 << endl;
+  return 0;
+}

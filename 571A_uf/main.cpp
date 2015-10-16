@@ -38,9 +38,6 @@ int main() {
   ll e[3], l;
   cin >> e[0] >> e[1] >> e[2] >> l;
 
-  ll sol = 0;
-  bool deg = isDeg(e[0], e[1], e[2]);
-
   if (e[0] > e[1]) {
     swap(e[0], e[1]);
   }
@@ -51,39 +48,20 @@ int main() {
     swap(e[1], e[2]);
   }
 
-  ll way = 0;
-  // do nth
-  if (!deg) {
-    sol++;
-  } else {
-    // deg at start, make it into non deg
-    ll inc = e[2] + 1 - e[1] - e[0];
-    // way to split inc to e[1] and e[0]
-    way = inc - 1;
-  }
-
-  // increase 1 edge
-  fl(i, 0, 3) {
-    ll remain = l;
-    if (deg) {
-      // if e[i] long edge, nth to do
-      if (i == 3) {
-        continue;
-      } else {
-        // increase until it is non-deg
-        ll inc = e[2] + 1 - e[0] - e[1];
-        remain = remain - inc;
-        sol++;
-      }
+  ll sol = 0;
+  fle(i, 0, l) {
+    ll le = e[2] + i;
+    ll rm = l - i;
+    ll ne = 0;
+    if (isDeg(e[0], e[1], le)) {
+      ll ne = le - i + 1 - e[0] - e[1];
+      if (ne > rm)
+        break;
+      rm -= ne;
     }
-    // non-deg tri here
-    sol += remain;
+    sol += (ne + 1) * (rm - ne + 2) * (rm - ne + 1) / 2;
+    cout << sol << " " << ne << "  " << rm << endl;
   }
-  // fix one edge
-  fl(i, 0, 3) {
-    ll remain = l;
-  }
-  
-
+  cout << sol << endl;
   return 0;
 }

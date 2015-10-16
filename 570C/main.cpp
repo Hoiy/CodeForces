@@ -38,4 +38,57 @@ template <class T> T lcm(T a, T b) { return a / gcd(a, b) * b; }
 
 using namespace std;
 
-int main() { return 0; }
+int main() {
+  ll n, m;
+  cin >> n >> m;
+
+  string s;
+  getline(cin, s);
+  getline(cin, s);
+
+  ll res = 0;
+  fl(i, 0, n) {
+    if (s[i] == '.') {
+      i++;
+      while (i < n && s[i] == '.') {
+        res++;
+        i++;
+      }
+    }
+  }
+
+  fl(i, 0, m) {
+    ll pos;
+    char c;
+    cin >> pos >> c;
+
+    if (n == 1) {
+      cout << 0 << endl;
+      continue;
+    }
+    pos --;
+
+    if ((s[pos] == '.' && c == '.') || (s[pos] != '.' && c != '.')) {
+      cout << res << endl;
+      continue;
+    }
+
+    ll ndot = 0;
+    if (pos == 0) {
+      ndot += s[pos + 1] == '.';
+    } else if (pos == n - 1) {
+      ndot += s[pos - 1] == '.';
+    } else {
+      ndot += s[pos + 1] == '.';
+      ndot += s[pos - 1] == '.';
+    }
+    if (c == '.') {
+      res += ndot;
+    } else {
+      res -= ndot;
+    }
+    cout << res << endl;
+    s[pos] = c;
+  }
+  return 0;
+}
